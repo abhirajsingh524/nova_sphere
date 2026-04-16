@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template
 from dotenv import load_dotenv
 from .extensions import db
+from . import models  # noqa: ensure models are registered with SQLAlchemy
 
 def create_app():
     load_dotenv()
@@ -15,7 +16,6 @@ def create_app():
     db.init_app(app)
 
     with app.app_context():
-        from .models import *
         db.create_all()
         from .seed import seed_database
         seed_database()
