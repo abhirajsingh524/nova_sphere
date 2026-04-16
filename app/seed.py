@@ -11,6 +11,12 @@ def seed_database():
         email="arpit@example.com",
         password_hash=generate_password_hash("password123")
     )
+    user1 =User(
+        full_name="om jaiswal",
+        email="om@example.com",
+        password_hash=generate_password_hash("password123")
+    )
 
     db.session.add(user)
+    db.session.add(user1)
     db.session.commit()
